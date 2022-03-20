@@ -72,6 +72,7 @@ class Game(Base):
         
     def update(self, msg):        
         data = msg.split(' ')
+        print(data)
         if data[0]=='flag':
             if int(data[1])==0:
                 self.time.configure(bg='green')
@@ -94,29 +95,18 @@ class Game(Base):
             i, j = int(data[1]),int(data[2])
             self.playerShip[i][j].configure(fg='#81CBF5', text="🍩")
         if data[0]=='win':
-            messagebox.showinfo("EndGame","You WIN")
-                # self.controller.changeWindow('Game')
-            # self.sock.close()
-            # self.window.destroy()
-                # self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                # self.sock.connect(('127.0.0.1', 12335))
-                # ServerListener(self.view,self.sock).start()
-                # self.sock.send('startGame'.encode('utf-8'))
-            # else:
-            #     self.sock.close()
-            #     self.window.destroy()
+            # messagebox.showinfo("EndGame","You WIN")
+            # if messagebox.askokcancel("ok", "You WIN"):
+            #     self.window.close()
+            print('win')
+            self.controller.changeWindow('Result',msg="You WIN")
+            # self.controller.changeWindow('Result',text='You WIN')
         if data[0]=='lose':
-            messagebox.showinfo("EndGame","You LOSE")
-                # self.controller.changeWindow('Game')
-            # self.sock.close()
-            # self.window.destroy()
-                # self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                # self.sock.connect(('127.0.0.1', 12335))   
-                # ServerListener(self.view,self.sock).start()
-                # self.sock.send('startGame'.encode('utf-8'))
-            # else:
-            #     self.sock.close()
-            #     self.window.destroy()
+            print('lose')
+            self.controller.changeWindow('Result',msg="You LOSE")
+
+            # messagebox.showinfo("EndGame","You LOSE")
+            # self.controller.changeWindow('Conn')
         
 
         

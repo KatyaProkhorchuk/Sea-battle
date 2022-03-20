@@ -394,8 +394,8 @@ class Player:
                     print('\ENDGAME/')
                     self.send('win')
                     self.enemy.send('lose')
-                    self.connection[0].close()
-                    self.enemy.connection[0].close()
+                    # self.connection[0].close()
+                    # self.enemy.connection[0].close()
                     
 
             elif shot_click == 2:

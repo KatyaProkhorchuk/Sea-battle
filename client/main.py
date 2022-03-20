@@ -8,7 +8,7 @@ import time
 window = tk.Tk()
 window.title("Морской бой")
 window.resizable(width=False, height=False)
-window.geometry('1200x780')
+window.geometry('1200x680')
 try:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.connect(('127.0.0.1', 12335))
