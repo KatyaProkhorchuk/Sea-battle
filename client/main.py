@@ -20,7 +20,7 @@ background_label.place(x=0, y=0)
 
 try:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.connect(('127.0.0.1', 12333))
+    sock.connect(('127.0.0.1', 12334))
     view = View(window, sock)
     view.changeWindow('Conn')
     ServerListener(view, sock).start()

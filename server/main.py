@@ -5,7 +5,7 @@ from player import Player
 
 wait=[]
 listener = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-listener.bind(('127.0.0.1',12333))
+listener.bind(('127.0.0.1',12334))
 listener.listen(1000)
 socket.allow_reuse_adress=True
 
