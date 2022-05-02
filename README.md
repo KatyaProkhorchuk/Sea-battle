@@ -1,5 +1,6 @@
-# TP-MIPT-PROJECT
-SEA-BUTTLE
-<h3>sudo apt-get install python3-tk</h3>
-<h3>sudo apt-get installpython3 server/main.py</h3>
-<h3>python3 client/main.py</h3>
+# SEA-BUTTLE
+>***Клонировать репозиторий*** git clone  https://github.com/KatyaProkhorchuk/TP-MIPT.git<br>
+cd TP-MIPT <br>
+pip install -r requirements.txt <br>
+***Для запуска сервера*** python3 server/main.py<br>
+***Для запуска клиента*** python3 client/main.py<br>
