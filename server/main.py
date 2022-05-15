@@ -3,17 +3,18 @@ from threading import Thread
 from player import Player
 
 
-wait=[]
+wait = []
 listener = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-listener.bind(('127.0.0.1',12334))
+listener.bind(('127.0.0.1', 12335))
 listener.listen(1000)
-socket.allow_reuse_adress=True
+socket.allow_reuse_adress = True
 
 
 class Server(Thread):
-    def __init__(self,player):
-        super(Server,self).__init__()
+    def __init__(self, player):
+        super(Server, self).__init__()
         self.player = player
+
     def run(self):
         while True:
             try:
@@ -21,11 +22,12 @@ class Server(Thread):
                 self.player.process_msg()
             except Exception:
                 break
+
+
 while True:
     try:
-        connect=listener.accept()
+        connect = listener.accept()
         print('connection success')
-        Server(Player(connect[0],wait)).start()
+        Server(Player(connect[0], wait)).start()
     except Exception:
         break
-

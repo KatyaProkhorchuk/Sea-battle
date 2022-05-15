@@ -27,7 +27,6 @@ class View:
 
 
     def changeWindow(self, name, msg=''):
-        print(name,msg)
         self.clear()
         self.view = self.createWindow(name,msg)
         self.view.draw(self.window)

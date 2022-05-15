@@ -8,6 +8,9 @@ from threading import Thread
 from datetime import datetime
 from serverListener import ServerListener
 
+
+
+
 def logger(data):
     try:
         f = open("log.txt","a")
@@ -67,6 +70,7 @@ class Game(Base):
     def update(self, msg):        
         data = msg.split(' ')
         logger(msg)
+
         if data[0]=='flag':
             if int(data[1])==0:
                 self.enemy_frame.configure(bg='green')
@@ -93,6 +97,8 @@ class Game(Base):
             self.controller.changeWindow('Result',msg="You WIN")
         if data[0]=='lose':
             self.controller.changeWindow('Result',msg="You LOSE")
+        if data[0] == 'endgame':
+            self.controller.changeWindow('Result',msg="Your enemy has left the game⚓")
         
 
         

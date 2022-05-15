@@ -225,7 +225,6 @@ class Player:
         self.flag = 0
         self.count_ship = 0
 
-
     def generate_pole(self):
         self.count_ship = 0
         for i in range(10):
@@ -235,17 +234,13 @@ class Player:
         generate_ships(self.array, 0, 3, 2)
         generate_ships(self.array, 0, 2, 3)
         generate_ships(self.array, 0, 1, 4)
-    
-
 
     def setEnemy(self, enemy):
         self.enemy = enemy
 
-
     def send(self, msg):
         msg += '@'
         self.connection.send(msg.encode('utf-8'))
-
 
     def sendShip(self):
         for i in range(10):
@@ -253,11 +248,9 @@ class Player:
                 if self.array[i][j] == 1:
                     self.send('ship_add '+str(i) + ' '+str(j))
 
-
     def setFlag(self, flag):
         self.flag = flag
         self.send('flag '+str(flag))
-
 
     def checkWait(self):
         # add second player ;)
@@ -274,7 +267,6 @@ class Player:
             self.sendShip()
             self.enemy.sendShip()
 
-
     def shot(self, x, y):
         if self.array[x][y] == 1:
             self.array[x][y] = 3  # ranen :(
@@ -287,11 +279,9 @@ class Player:
             self.array[x][y] = -1
             return 2
 
-
     def check(self, x, y):
         if 0 <= x <= 9 and 0 <= y <= 9:
             return self.array[x][y]
-
 
     def isDie(self, x, y):
         res = isDieShips(self.enemy.array, x, y)
@@ -381,13 +371,13 @@ class Player:
                     self.send('win')
                     self.enemy.send('lose')
 
-
             elif shot_click == 2:
                 self.enemy.send('enemy_bang '+arr_recv[1] + ' '+arr_recv[2])
                 self.send('bang '+arr_recv[1] + ' '+arr_recv[2])
                 self.setFlag(1)
                 self.enemy.setFlag(0)
         elif arr_recv[0] == 'ENDGame':
+            self.enemy.send('endgame')
             self.connection[0].close()
             self.enemy.connection[0].close()
         elif arr_recv[0] == 'startGame':
